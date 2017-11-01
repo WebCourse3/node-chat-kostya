@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-4 row">
+	<div>
+		<label for="UserName">UserName:</label>
+		<input id="UserName" type="text" class="form-control" placeholder="UserName" name="UserName">
+	</div>
+	<div>
+		<label for="newComment">Comment:</label>
+		<input id="newComment" type="text" class="form-control" placeholder="Comment"
+		       name="Password"><br>
+	</div>
+	<button id="submit" type="submit" class="btn btn-default" onclick="emitMessage();">Comment</button>
+</div>
+<div id="comments" class=" row col-xs-9">
+
+</div>
+
+<script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../scripts/chat.js"></script>
+</body>
+</html>
