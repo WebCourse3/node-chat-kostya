@@ -1,14 +1,19 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var express = require('express'),
+	app = express(),
+	http = require('http').Server(app),
+	io = require('socket.io')(http),
+	path = require('path');
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node', express.static(path.join(__dirname, '/node_modules')));
 
-app.get('/', (req, res) = > {
-	res.sendFile(__dirname + '/public/views/chat.html');
-})
-;
+/*app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/public/views/index.html');
+});*/
+
+app.get('*', function (req, res) {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 io.on('connection', function (socket) {
 	console.log('a user connected');
